@@ -11,6 +11,19 @@ function Notes() {
       .then(data => setNotes(data))
   }, [])
 
+  const handleDelete = (id) => {
+    const confirmation = confirm("You want delete this note?")
+
+    if (confirmation) {
+      fetch("http://localhost:5000/notes/" + id, {
+        method: "DELETE"
+      })
+
+      const newNotes = notes.filter(note => note.id !== id)
+      setNotes(newNotes)
+    }
+  }
+
   return (
     <Masonry
       columns={3}
@@ -19,7 +32,8 @@ function Notes() {
         <div
           key={note.id}>
           <NoteCard
-            note={note} />
+            note={note}
+            handleDelete={handleDelete} />
         </div>
       ))}
     </Masonry>

@@ -1,5 +1,5 @@
 import { Avatar, Card, CardContent, CardHeader, IconButton, Typography } from "@mui/material"
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const handleBgAvatar = (category) => {
   if (category === "life") {
@@ -13,7 +13,7 @@ const handleBgAvatar = (category) => {
   }
 }
 
-function NoteCard({ note }) {
+function NoteCard({ note, handleDelete }) {
   return (
     <Card
       sx={{ m: 1 }}>
@@ -23,8 +23,10 @@ function NoteCard({ note }) {
             sx={{ bgcolor: handleBgAvatar(note.category) }} />
         }
         action={
-          <IconButton>
-            <MoreVertIcon />
+          <IconButton
+            onClick={() => handleDelete(note.id)}>
+            <DeleteIcon
+              color="warning" />
           </IconButton>
         }
         title={note.title}
