@@ -1,6 +1,8 @@
+import Create from "./pages/Create"
+
 function App() {
   return (
-    <h1>Hello Deric</h1>
+    <Create />
   )
 }
 
