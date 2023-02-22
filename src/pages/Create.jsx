@@ -1,6 +1,7 @@
 import { Button, Container, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, TextField, Typography } from "@mui/material"
 import SendIcon from '@mui/icons-material/Send';
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Create() {
   const [title, setTitle] = useState("")
@@ -8,6 +9,8 @@ function Create() {
   const [category, setCategory] = useState("life")
   const [errorTitle, setErrorTitle] = useState(false)
   const [errorDetails, setErrorDetails] = useState(false)
+
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -21,7 +24,11 @@ function Create() {
       setErrorDetails(true)
     }
     if (title && details) {
-      console.log(title, details, category)
+      fetch("http://localhost:5000/notes", {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify({ title, details, category })
+      }).then(() => navigate("/"))
     }
   }
 

@@ -12,7 +12,7 @@ function Layout({ children }) {
       <LeftDrawer
         drawerWidth={drawerWidth} />
       <Container
-        sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}>
+        sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px`, mt: 2 }}>
         {children}
       </Container>
     </>
