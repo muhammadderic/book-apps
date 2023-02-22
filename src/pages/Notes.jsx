@@ -1,5 +1,6 @@
 import { Masonry } from "@mui/lab"
 import { useEffect, useState } from "react"
+import NoteCard from "../components/NoteCard"
 
 function Notes() {
   const [notes, setNotes] = useState([])
@@ -15,9 +16,11 @@ function Notes() {
       columns={3}
       spacing={1}>
       {notes.map(note => (
-        <p>
-          {note.title}
-        </p>
+        <div
+          key={note.id}>
+          <NoteCard
+            note={note} />
+        </div>
       ))}
     </Masonry>
   )
