@@ -3,7 +3,7 @@
 <!-- MY PROJECT -->
 <br />
 <div align="center">
-  <img src="/my-logo-black.png" alt="Logo" width="80" height="80">
+  <img src="./public/my-logo-black.png" alt="Logo" width="80" height="80">
   <h3 align="center">Mucodevde</h3>
 </div>
 
