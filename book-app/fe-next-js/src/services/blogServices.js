@@ -67,3 +67,24 @@ export const updateBlogById = async (blogId, blogFormData) => {
     throw new Error("An error occurred while updating blog. Please try again.");
   }
 }
+
+// === DELETE A BLOG BY ID ===
+export const deleteBlogById = async (blogId) => {
+  try {
+    const response = await fetch(`/api/blogs?id=${blogId}`, {
+      method: "DELETE",
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to delete blog: ${response.status} ${response.statusText}`);
+    }
+
+    const result = await response.json();
+
+    return result;
+
+  } catch (error) {
+    console.error("Error deleting blog:", error.message);
+    throw new Error("An error occurred while deleting blog. Please try again.");
+  }
+}
