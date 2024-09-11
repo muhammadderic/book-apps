@@ -1,3 +1,4 @@
+import EditBlog from "./EditBlog"
 import { Button } from "./ui/button"
 import { Card, CardContent, CardDescription, CardTitle } from "./ui/card"
 
@@ -14,9 +15,7 @@ const BlogOverviewCard = ({ blogItem }) => {
         </CardDescription>
 
         <div className="mt-5 flex gap-5  items-center">
-          <Button onClick={console.log("clicked")} variant="outline">
-            Edit
-          </Button>
+          <EditBlog blogItem={blogItem} />
 
           <Button onClick={console.log("clicked")} variant="outline">
             Delete

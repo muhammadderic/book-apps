@@ -75,3 +75,34 @@ export async function POST(req) {
     });
   }
 }
+
+// === UPDATE BLOG ===
+export async function PUT(req) {
+  try {
+    await connectToDB();
+    const { searchParams } = new URL(req.url);
+    const getCurrentBlogID = searchParams.get("id");
+
+    if (!getCurrentBlogID) {
+      return jsonResponse(false, "Blog ID is required");
+    }
+
+    const blogFormData = await req.json();
+    const updatedBlog = await Blog.findByIdAndUpdate(
+      getCurrentBlogID,
+      { title: blogFormData.title, description: blogFormData.description },
+      { new: true, runValidators: true }
+    );
+
+    return updatedBlog
+      ? jsonResponse(true, updatedBlog)
+      : jsonResponse(false, "Something went wrong! Please try again");
+  } catch (error) {
+    console.log(error);
+    return jsonResponse(false, "Something went wrong! Please try again");
+  }
+}
+
+function jsonResponse(success, dataOrMessage) {
+  return NextResponse.json(success ? { success, data: dataOrMessage } : { success, message: dataOrMessage });
+}

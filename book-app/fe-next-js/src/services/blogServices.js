@@ -45,3 +45,25 @@ export const createBlog = async (blogData) => {
     throw new Error("An error occurred while creating blog. Please try again.");
   }
 }
+
+// === UPDATE A BLOG BY ID ===
+export const updateBlogById = async (blogId, blogFormData) => {
+  try {
+    const response = await fetch(`/api/blogs?id=${blogId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(blogFormData), // Pass the updated blog data
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to update blog: ${response.status} ${response.statusText}`);
+    }
+
+    return;
+  } catch (error) {
+    console.error("Error updating blog:", error.message);
+    throw new Error("An error occurred while updating blog. Please try again.");
+  }
+}
