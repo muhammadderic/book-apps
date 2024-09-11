@@ -1,16 +1,16 @@
 import { Button } from "./ui/button"
 import { Card, CardContent, CardDescription, CardTitle } from "./ui/card"
 
-const BlogOverviewCard = () => {
+const BlogOverviewCard = ({ blogItem }) => {
   return (
     <Card className="p-5">
       <CardContent>
         <CardTitle className="mb-5">
-          blog title
+          {blogItem?.title}
         </CardTitle>
 
         <CardDescription>
-          blog description
+          {blogItem?.description}
         </CardDescription>
 
         <div className="mt-5 flex gap-5  items-center">
