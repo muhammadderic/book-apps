@@ -15,7 +15,7 @@ const BlogOverviewCard = ({ blogItem }) => {
 
         <div className="mt-5 flex gap-5  items-center">
           <Button onClick={console.log("clicked")} variant="outline">
-            Delete
+            Edit
           </Button>
 
           <Button onClick={console.log("clicked")} variant="outline">
